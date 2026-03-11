@@ -4,7 +4,7 @@ from sqlalchemy import Column, Integer, String, Numeric, DateTime, Enum, Text, F
 
 
 
-class Transactions(config.base):
+class Transactions(config.Base):
     __tablename__ = 'transactions' # create table
 
     # define columns, datatypes, and constraints

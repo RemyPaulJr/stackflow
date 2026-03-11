@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv() # Load our .env
 
-base = declarative_base() # define our base that will link our classes, as they will inherit this declarative base for declarative mapping
+Base = declarative_base() # define our base that will link our classes, as they will inherit this declarative base for declarative mapping. declarative_base() returns a class so Base must be PascalCase
 
 url_object = URL.create(
     "postgresql+psycopg2", # dialect + drivername
