@@ -15,3 +15,32 @@ class SavingsGoals(config.Base):
     status = Column(Enum(enums.SavingsGoalsStatusEnum), nullable=False)
     created_at = Column(DateTime, server_default=func.now(), nullable=False)
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
+    def add_SavingsGoals(self, session):
+        session.add(self)
+        session.commit()
+    
+    def get_SavingsGoals(self, session, id):
+        return session.get(SavingsGoals, id)
+
+    def update_SavingsGoals(self, session, id, **kwargs):
+        saving_goal = session.get(SavingsGoals, id)
+
+        if saving_goal:
+            for key, value in kwargs.items():
+                setattr(saving_goal, key, value)
+            session.commit()
+        
+    def delete_SavingsGoals(self, session, id):
+        saving_goal = session.get(SavingsGoals, id)
+
+        if saving_goal:
+            session.delete(saving_goal)
+            session.commit()
+
+    def calculate_Trajectory(self, session, id):
+        saving_goal = session.get(SavingsGoals, id)
+
+        if saving_goal:
+            trajectory = round((saving_goal.target_amount - saving_goal.current_amount) / saving_goal.monthly_contribution, 2)
+            print(f"Will reach target goal in {trajectory} months")
