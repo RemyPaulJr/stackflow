@@ -1,5 +1,5 @@
-import config
-import enums
+from models import config
+from models import enums
 from sqlalchemy import Column, Integer, String, Numeric, DateTime, Enum, Text, ForeignKey, func
 
 
@@ -29,17 +29,17 @@ class Transactions(config.Base):
         session.commit()
 
     def get_transaction(self, session, id) -> "Transactions":
-        return session.query(Transactions).filter_by(id=id).first()
+        return session.get(Transactions, id)
 
     def update_transaction(self, session, id, **kwargs):
-        transaction = session.query(Transactions).filter_by(id=id).first()
+        transaction = session.get(Transactions, id)
         if transaction:
             for key, value in kwargs.items():
                 setattr(transaction, key, value)
             session.commit()
     
     def delete_transaction(self, session, id):
-        transaction = session.query(Transactions).filter_by(id=id).first()
+        transaction = session.get(Transactions, id)
         if transaction:
             session.delete(transaction)
             session.commit()
