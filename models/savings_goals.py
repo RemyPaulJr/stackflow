@@ -1,5 +1,5 @@
-import config
-import enums
+from models import config
+from models import enums
 from sqlalchemy import Column, Integer, String, Numeric, DateTime, Enum, Text, ForeignKey, func
 
 class SavingsGoals(config.Base):
