@@ -30,4 +30,4 @@ saving_goal = savings_goals.SavingsGoals(
 #saving_goal.get_SavingsGoals(config.session, 1)
 #saving_goal.update_SavingsGoals(config.session, 2, monthly_contribution="12000")
 #saving_goal.delete_SavingsGoals(config.session, 1)
-saving_goal.calculate_Trajectory(config.session, 2)
+#saving_goal.calculate_Trajectory(config.session, 2)
