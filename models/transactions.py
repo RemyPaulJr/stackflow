@@ -8,14 +8,14 @@ class Transactions(config.Base):
     __tablename__ = 'transactions' # create table
 
     # define columns, datatypes, and constraints
-    id = Column(Integer, autoincrement=True, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True, nullable=False)
     amount = Column(Numeric(10,2),nullable=False)
     category = Column(Enum(enums.TransactionCategoryEnum), nullable=False) # enum datatype that has all possible values in enums.py
     description = Column(Text)
     date = Column(DateTime, nullable=False)
     type = Column(Enum(enums.TransactionTypeEnum), nullable=False)
     savings_goal_id = Column(Integer, ForeignKey("savings_goals.id"))
-    created_at = Column(DateTime, server_default=func.now(), nullable=False)
+    created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
     '''
