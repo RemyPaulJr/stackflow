@@ -2,6 +2,7 @@ from models import config
 from models import enums
 from sqlalchemy import Column, Integer, Enum, String, DateTime, func, Numeric, Date, Text, select
 import requests
+import os
 
 class CryptoHolding(config.Base):
     __tablename__ = 'crypto_holding'
@@ -42,9 +43,10 @@ class CryptoHolding(config.Base):
 
     def get_portfolio_value(self, session):
         
+        api_key = os.getenv("API_KEY")
         # call CoinGecko API for crypto holdings and store it as a dictionary
         url = "https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=bitcoin%2Cethereum%2Csolana%2Cdogecoin&names=Bitcoin%2CEthereum%2CSolana%2CDodge&symbols=btc%2Ceth%2Csol%2Cdoge"
-        headers = {"x-cg-demo-api-key": "CG-8WyLFY96RG7oAkLc8Z6AVm3L"}
+        headers = {"x-cg-demo-api-key": api_key}
         response = requests.get(url, headers=headers)
         data = response.json()
 
@@ -59,9 +61,10 @@ class CryptoHolding(config.Base):
 
     def get_current_pnl(self, session):
         
+        api_key = os.getenv("API_KEY")
         # call CoinGecko API for crypto holdings and store it as a dictionary
         url = "https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=bitcoin%2Cethereum%2Csolana%2Cdogecoin&names=Bitcoin%2CEthereum%2CSolana%2CDodge&symbols=btc%2Ceth%2Csol%2Cdoge"
-        headers = {"x-cg-demo-api-key": "CG-8WyLFY96RG7oAkLc8Z6AVm3L"}
+        headers = {"x-cg-demo-api-key": api_key}
         response = requests.get(url, headers=headers)
         data = response.json()
 
