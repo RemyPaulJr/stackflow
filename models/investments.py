@@ -3,16 +3,16 @@ from models import enums
 from sqlalchemy import Column, Integer, String, Enum, Numeric, DateTime, func, Text, Date
 
 class Investments(config.Base):
-    __table__name = "investments"
+    __tablename__ = 'investments'
 
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False),
-    account_type = Column(Enum(enums.InvestmentsAccountTypeEnum), nullable=False),
-    ticker = Column(String(10), nullable=False),
-    shares = Column(Numeric(10,4), nullable=False),
-    avg_cost_basis = Column(Numeric(10,2), nullable=False),
-    date_added = Column(Date, server_default=func.now()),
-    notes = Column(Text),
-    created_at = Column(DateTime, server_default=func.now()),
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    account_type = Column(Enum(enums.InvestmentsAccountTypeEnum), nullable=False)
+    ticker = Column(String(10), nullable=False)
+    shares = Column(Numeric(10,4), nullable=False)
+    avg_cost_basis = Column(Numeric(10,2), nullable=False)
+    date_added = Column(Date, server_default=func.now())
+    notes = Column(Text)
+    created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
     def add_investment(self, session):
