@@ -9,10 +9,10 @@ class SavingsGoals(config.Base):
     name = Column(String(100), nullable=False)
     target_amount = Column(Numeric(10,2), nullable=False)
     current_amount = Column(Numeric(10,2), server_default="0.00")
-    deadline = Column(DateTime, server_default=func.now()) # enum datatype that has all possible values in enums.py
+    deadline = Column(DateTime, server_default=func.now())
     description = Column(Text)
     monthly_contribution = Column(Numeric(10,2), nullable=False)
-    status = Column(Enum(enums.SavingsGoalsStatusEnum), nullable=False)
+    status = Column(Enum(enums.SavingsGoalsStatusEnum), nullable=False) # enum datatype that has all possible values in enums.py
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
 
