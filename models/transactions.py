@@ -1,8 +1,6 @@
 from models import config
 from models import enums
-from sqlalchemy import Column, Integer, String, Numeric, DateTime, Enum, Text, ForeignKey, func
-
-
+from sqlalchemy import Column, Integer, String, Numeric, DateTime, Enum, Text, ForeignKey, func, Index
 
 class Transactions(config.Base):
     __tablename__ = 'transactions' # create table
