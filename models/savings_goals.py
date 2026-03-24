@@ -19,6 +19,7 @@ class SavingsGoals(config.Base):
     def add_SavingsGoals(self, session):
         session.add(self)
         session.commit()
+        return self
     
     def get_SavingsGoals(self, session, id):
         return session.get(SavingsGoals, id)
@@ -30,6 +31,7 @@ class SavingsGoals(config.Base):
             for key, value in kwargs.items():
                 setattr(saving_goal, key, value)
             session.commit()
+        return self
         
     def delete_SavingsGoals(self, session, id):
         saving_goal = session.get(SavingsGoals, id)
@@ -37,6 +39,7 @@ class SavingsGoals(config.Base):
         if saving_goal:
             session.delete(saving_goal)
             session.commit()
+        return self
 
     def calculate_Trajectory(self, session, id):
         saving_goal = session.get(SavingsGoals, id)

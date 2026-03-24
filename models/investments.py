@@ -18,6 +18,7 @@ class Investments(config.Base):
     def add_investment(self, session):
         session.add(self)
         session.commit()
+        return self
 
     def get_investment(self, session, id):
         return session.get(Investments, id)
@@ -29,6 +30,7 @@ class Investments(config.Base):
             for key, value in kwargs.items():
                 setattr(investment, key, value)
             session.commit()
+        return self
 
     def delete_investment(self, session, id):
         investment = session.get(Investments, id)
@@ -36,3 +38,4 @@ class Investments(config.Base):
         if investment:
             session.delete(investment)
             session.commit()
+        return self

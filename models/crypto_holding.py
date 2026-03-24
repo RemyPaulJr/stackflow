@@ -21,6 +21,7 @@ class CryptoHolding(config.Base):
     def add_crypto_holding(self, session):
         session.add(self)
         session.commit()
+        return self
     
     def get_crypto_holding(self, session, id):
         return session.get(CryptoHolding, id)
@@ -32,6 +33,7 @@ class CryptoHolding(config.Base):
             for key, value in kwargs.items():
                 setattr(crypto_holding, key, value)
             session.commit()
+        return self
 
         
     def delete_crypto_holding(self, session, id):
@@ -40,6 +42,7 @@ class CryptoHolding(config.Base):
         if crypto_holding:
             session.delete(crypto_holding)
             session.commit()
+        return self
 
     def get_portfolio_value(self, session):
         
