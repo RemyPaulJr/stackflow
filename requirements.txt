@@ -12,3 +12,4 @@ pyarrow == 23.0.1
 schedule == 1.2.2
 fastparquet == 2025.12.0
 alembic >= 1.18.4
+pytest == 9.0.2

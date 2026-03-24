@@ -18,6 +18,7 @@ class PortfolioSnapshot(config.Base):
     def add_portfolio_snapshot(self, session):
         session.add(self)
         session.commit()
+        return self
     
     def get_portfolio_snapshot(self, session, id):
         return session.get(PortfolioSnapshot, id)
@@ -29,7 +30,7 @@ class PortfolioSnapshot(config.Base):
             for key, value in kwargs.items():
                 setattr(portfolio_snapshot, key, value)
             session.commit()
-
+        return self
         
     def delete_portfolio_snapshot(self, session, id):
         portfolio_snapshot = session.get(PortfolioSnapshot, id)
@@ -37,6 +38,7 @@ class PortfolioSnapshot(config.Base):
         if portfolio_snapshot:
             session.delete(portfolio_snapshot)
             session.commit()
+        return self
 
     def get_latest_snapshot(self, session):
         stmt = select(PortfolioSnapshot).order_by(PortfolioSnapshot.recorded_at.desc()).limit(1)

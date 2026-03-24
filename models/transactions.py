@@ -22,9 +22,10 @@ class Transactions(config.Base):
     and add the instance of the transaction
     then commit it (INSERT INTO)
     '''
-    def add_transaction(self, session):
+    def add_transaction(self, session) -> "Transactions":
         session.add(self)
         session.commit()
+        return self
 
     def get_transaction(self, session, id) -> "Transactions":
         return session.get(Transactions, id)
@@ -35,9 +36,11 @@ class Transactions(config.Base):
             for key, value in kwargs.items():
                 setattr(transaction, key, value)
             session.commit()
+        return self
     
     def delete_transaction(self, session, id):
         transaction = session.get(Transactions, id)
         if transaction:
             session.delete(transaction)
             session.commit()
+        return self

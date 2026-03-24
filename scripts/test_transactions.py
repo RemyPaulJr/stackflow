@@ -1,5 +1,6 @@
 from models import config, transactions, enums, savings_goals, crypto_holding, portfolio_snapshot
 from datetime import datetime
+import pytest
 
 transaction = transactions.Transactions(
     amount = '50.00',
@@ -36,6 +37,30 @@ portfolio_snapshots = portfolio_snapshot.PortfolioSnapshot(
 )
 
 # Transaction test
+@pytest.fixture(scope="module")
+def a_create_transaction(session):
+    new_transaction = transaction.add_transaction(session)
+    results = transaction.get_transaction(session, new_transaction.id)
+    print("\n\nTesting create method....")
+    print(f"Successfully created transaction {results.id} with description:", results.description)
+    return results.id, results.description
+   
+def test_b_read_transaction(a_create_transaction, session):
+    get = transaction.get_transaction(session, a_create_transaction[0])
+    print("\nTesting read method....")
+    print("Successfully read transaction", get.id)
+
+def test_c_update_transaction(a_create_transaction, session):
+    update = transaction.update_transaction(session, a_create_transaction[0], description="Dinner at Popeyes")
+    print("\nTesting update method....")
+    print(f"Successfully updated transaction {update.id} with description:", update.description)
+
+def test_d_delete_transaction(a_create_transaction, session):
+    delete = transaction.delete_transaction(session, a_create_transaction[0])
+    print("\nTesting delete method....")
+    print("Successfully deleted transaction:", delete.id)
+
+
 #transaction.add_transaction(config.session)
 #transaction.get_transaction(config.session, 2)
 #transaction.update_transaction(config.session, 2, description= "Grocery shopping at Walmart")

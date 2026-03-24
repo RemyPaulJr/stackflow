@@ -17,6 +17,7 @@ class Debts(config.Base):
     def add_debt(self, session):
         session.add(self)
         session.commit()
+        return self
 
     def get_debt(self, session, id):
         return session.get(Debts, id)
@@ -28,6 +29,7 @@ class Debts(config.Base):
             for key, value in kwargs.items():
                 setattr(debt, key, value)
             session.commit()
+        return self
     
     def delete_debt(self, session, id):
         debt = session.get(Debts, id)
@@ -35,3 +37,4 @@ class Debts(config.Base):
         if debt:
             session.delete(debt)
             session.commit()
+        return self
