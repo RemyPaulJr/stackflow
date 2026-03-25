@@ -46,4 +46,5 @@ class SavingsGoals(config.Base):
 
         if saving_goal:
             trajectory = round((saving_goal.target_amount - saving_goal.current_amount) / saving_goal.monthly_contribution, 2)
-            print(f"Will reach target goal in {trajectory} months")
+            return trajectory
+        return None
