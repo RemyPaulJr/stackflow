@@ -3,7 +3,7 @@ from ui import app
 from sqlalchemy import text
 from models import savings_goals
 
-st.title("savings_goals table")
+st.title("Savings Goals table")
 
 saving_goals = app.conn.execute(text("SELECT * FROM savings_goals;"))
 st.dataframe(saving_goals)

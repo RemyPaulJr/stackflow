@@ -8,5 +8,5 @@ from models import config
 
 conn = config.session
 
-pg = st.navigation(["About.py", "Transactions.py", "SavingsGoals.py"])
+pg = st.navigation(["About.py", "Transactions.py", "SavingsGoals.py", "Investments.py", "CryptoHoldings.py", "Debts.py"])
 pg.run()
