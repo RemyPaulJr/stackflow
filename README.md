@@ -1,11 +1,28 @@
 ### StackFlow
-Personal Finance + Live Crypto Intelligence Platform
-
-> Status: In Development - Estimated Completion Date April 29th 2026.
+Personal Finance Platform
 
 ### What It Does
-StackFlow is a personal finance application used to track my personal finances. It has an additional layer - a live crypto market intelligence platform with real-time market trends and AI-powered insights.
+StackFlow is a personal finance application used to track my personal finances. It uses object-oriented programming and object-relational mapping to add finance data to a Postgres Database hosted on a docker container locally.
 
-### Folder Structure
+### Data Sources
+My primary data source is done by the scripts/seed_database.py script where I used **Gen AI** to generate random fictional data using the python faker and random library.
+
+The script uses my create/add methods I created on the table classes themselves.
+
+Another Data Source is the CoinGecko Free API. This API is used to grab the live prices of crypto and perform aggregations.
+
+### Data Ingestion
+The data is ingested through my create/add methods as I mentioned. I can at any point create a script to add data to my database in Postgres. This is all manual at the moment as there is no automated way to add data.
+
+### Data Modeling
+> ERD Diagram can be viewed in the docs [here](docs/erd.png).
+
+### Data Flow
+> Architecture diagram with a basic overview of the data flow can be found in the docs [here](docs/architecture.png).
 
 ### Tech Stack
+- **Backend**: Python
+- **Frontend**: Streamlit
+- **Database**: Postgres
+- **Containerization**: Docker
+- **Version Control**: Github/Git
