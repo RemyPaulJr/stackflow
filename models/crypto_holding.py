@@ -72,7 +72,7 @@ class CryptoHolding(config.Base):
         data = response.json()
 
         # query db for the name of the coin as a lowercase to match api response and it's quantity
-        stmt = select(CryptoHolding.name, CryptoHolding.quantity, CryptoHolding.avg_purchase_price) # type: ignore
+        stmt = select(CryptoHolding.name.lower(), CryptoHolding.quantity, CryptoHolding.avg_purchase_price) # type: ignore
         portfolio_value_dict = {row.name.lower(): {"quantity": row.quantity, "average_price":row.avg_purchase_price} for row in session.execute(stmt)}
 
         # loop through the query results dictionary and find the matching coins in api response, then calulate total holding value
