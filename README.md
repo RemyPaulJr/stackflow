@@ -26,3 +26,30 @@ The data is ingested through my create/add methods as I mentioned. I can at any 
 - **Database**: Postgres
 - **Containerization**: Docker
 - **Version Control**: Github/Git
+
+### Run Application Locally
+1. Clone Github repository.
+```bash
+git clone "https://github.com/RemyPaulJr/stackflow.git"
+```
+2. Create python virtual environment and initialize it.
+> Mac and Linux only. Windows Powershell will require different set of commands.
+```bash
+python3 -m venv .venv
+```
+```bash
+source .venv/bin/activate
+```
+3. Install python dependencies.
+```bash
+python install -r requirements.txt
+```
+4. Start docker container.
+> Docker desktop needs to be installed.
+``bash
+docker compose up
+```
+5. Start streamlit application for frontend.
+```bash
+python -m streamlit run /ui/app.py
+```
