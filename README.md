@@ -46,10 +46,12 @@ python install -r requirements.txt
 ```
 4. Start docker container.
 > Docker desktop needs to be installed.
-``bash
+```bash
 docker compose up
 ```
 5. Start streamlit application for frontend.
 ```bash
 python -m streamlit run /ui/app.py
 ```
+### Video Walkthrough
+[![Video Walkthrough](https://img.youtube.com/vi/Zgqh7NTTI3Q/0.jpg)](https://www.youtube.com/watch?v=Zgqh7NTTI3Q)
